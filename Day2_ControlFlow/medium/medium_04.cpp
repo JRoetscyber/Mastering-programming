@@ -29,11 +29,32 @@
  */
 
 #include <iostream>
-using namespace std;
+#include <bitset>
 
 int main() {
     // TODO: Write your solution here.
+    unsigned char state = 0;
+    const unsigned char ALARM = 8;
 
+    state |= ALARM;
+
+    if (state & ALARM) {
+        std::cout << "Alarm is ON" << "\n";
+    }
+
+    state ^= ALARM;
+
+    if (!(state & ALARM)) {
+        std::cout << "Alarm is OFF" << "\n";
+    }
+
+    state |= ALARM;
+
+    state &= ~ALARM;
+
+    if (!(state & ALARM)) {
+        std::cout << "Alarm successfully cleared" << "\n";
+    }
 
     return 0;
 }

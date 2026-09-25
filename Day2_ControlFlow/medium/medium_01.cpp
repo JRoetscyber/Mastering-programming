@@ -36,12 +36,44 @@
  */
 
 #include <iostream>
+#include <vector>
+#include <numeric>
+
 using namespace std;
 
 int main() {
     // TODO: Write your solution here.
+    int readings[] = { 12, -1, 45, 0, 999, 28, -5, 60, 999, 10 };
 
+    std::vector<int> validTotal;
 
+    const int SIZE = 10;
+
+    int count = 0;
+
+    for (const int& item : readings) {
+        if (item < 0) {
+            std::cout << "Skipping corrupted sensor reading: " << item << "\n";
+            continue;
+        }
+        else if (item == 999) {
+            std::cout << "CRITICAL FAILURE (999) detected! Aborting loop." << "\n";
+            break;
+        }
+        else {
+            validTotal.push_back(item);
+            std::cout << "Valid reading: " << item << "\n";
+            count++;
+        }
+    }
+
+    std::cout << "Processed valid count: " << count << "\n";
+
+    int sum = std::accumulate(validTotal.begin(), validTotal.end(), 0);
+    std::cout << "Valid total: " << sum << "\n";
+
+    double avg = static_cast<double>(sum) / validTotal.size();
+    std::cout << "Valid average: " << avg << "\n";
 
     return 0;
 }

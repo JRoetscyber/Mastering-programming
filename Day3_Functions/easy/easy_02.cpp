@@ -25,10 +25,28 @@
 using namespace std;
 
 // TODO: Write your 3 overloaded multiply functions here
+int multiply(int a, int b) {
+    int answer = a * b;
+    std::cout << "Int multiply (" << a << "x" << b << "): " << answer << "\n";
+    return answer;
+}
+double multiply(double a, double b) {
+    double answer = a * b;
+    std::cout << "Double multiply (" << a << "x" << b << "): " << answer << "\n";
+    return answer;
+}
+int multiply(int a, int b, int c) {
+    int answer = a * b * c;
+    std::cout << "Int multiply (" << a << "x" << b << "x" << c << "): " << answer << "\n";
+    return answer;
+}
 
 
 int main() {
     // TODO: Write your solution here.
+    multiply(2, 45);
+    multiply(2.32, 5.37);
+    multiply(2354235, 2235, 1);
 
     return 0;
 }

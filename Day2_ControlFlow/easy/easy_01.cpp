@@ -31,8 +31,24 @@ using namespace std;
 
 int main() {
     // TODO: Write your solution here.
+    int val = 85;
+    int* ptr = nullptr;
 
+    if (ptr != nullptr && *ptr > 50) {
+        std::cout << "Valid and greater than 50" << "\n";
+    }
+    else {
+        std::cout << "Safety triggered: pointer is null or value <= 50" << "\n";
+    }
 
+    ptr = &val;
+
+    if (ptr != nullptr && *ptr > 50) {
+        std::cout << "Valid and greater than 50" << "\n";
+    }
+    else {
+        std::cout << "Safety triggered: pointer is null or value <= 50" << "\n";
+    }
 
     return 0;
 }

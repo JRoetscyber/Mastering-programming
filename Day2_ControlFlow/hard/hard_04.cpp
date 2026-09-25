@@ -27,7 +27,17 @@ using namespace std;
 
 int main() {
     // TODO: Write your solution here.
+    unsigned int num = 29;
+    int count = 0;
 
+    while (num > 0) {
+        if (num & 1) {
+            count++;
+        }
+        num >>= 1;
+    }
+
+    std::cout << "Number of set bits: " << count << "\n";
 
     return 0;
 }

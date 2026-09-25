@@ -29,10 +29,36 @@
 #include <iostream>
 using namespace std;
 
+void severityChecker(char severity) {
+    switch (severity) {
+    case 'W':
+    case 'w':
+        std::cout << "Testing " << severity << " : Level: WARNING (check system logs)" << "\n";
+        break;
+    case 'E':
+    case 'e':
+        std::cout << "Testing " << severity << " : ERROR(Critical action required)" << "\n";
+        break;
+    case 'I':
+    case 'i':
+        std::cout << "Testing " << severity << " : Level: INFO (Normal status)" << "\n";
+        break;
+    default:
+        std::cout << "Testing " << severity << " : Level: UNKNOWN" << "\n";
+        break;
+    }
+};
+
 int main() {
     // TODO: Write your solution here.
+    char severity = 'W';
+    severityChecker(severity);
 
+    severity = 'e';
+    severityChecker(severity);
 
+    severity = 'X';
+    severityChecker(severity);
 
     return 0;
 }

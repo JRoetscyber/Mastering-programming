@@ -20,13 +20,24 @@
 using namespace std;
 
 // TODO: Write healByValue here
-
+void healByValue(int health) {
+    health = health + 50;
+}
 
 // TODO: Write healByReference here
-
+void healByReference(int& health) {
+    health = health + 50;
+}
 
 int main() {
     // TODO: Write your solution here.
+    int playerHealth = 100;
+
+    healByValue(playerHealth);
+    std::cout << "Health after healByValue: " << playerHealth << "\n";
+
+    healByReference(playerHealth);
+    std::cout << "Health after healByValue: " << playerHealth << "\n";
 
     return 0;
 }

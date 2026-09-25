@@ -24,7 +24,7 @@ int main() {
     vector<int> scores = { 45, 88, 92, 70, 80, 55, 100, 32 };
 
     // TODO: Use std::count_if and a lambda to count scores >= 80
-    // int passingCount = std::count_if(...);
+    int passingCount = std::count_if([&scores](int i) {return i > 80:})
 
 
     return 0;

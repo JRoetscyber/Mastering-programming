@@ -25,8 +25,15 @@ using namespace std;
 
 int main() {
     // TODO: Write your solution here.
+    int count = 10;
 
+    while (count < 5) {
+        std::cout << "While running : " << count << "\n";
+    };
 
+    do {
+        std::cout << "Do-While running: " << count << "\n";
+    } while (count < 5);
 
     return 0;
 }

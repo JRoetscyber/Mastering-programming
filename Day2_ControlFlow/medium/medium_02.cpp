@@ -47,12 +47,37 @@
 #include <iostream>
 using namespace std;
 
-// TODO: Define enum class State here.
+enum class State { IDLE, CONNECTING, CONNECTED, DISCONNECTED };
 
 int main() {
     // TODO: Write your solution here.
+    State currentState = State::IDLE;
+    int attempts = 0;
 
-
+    while (currentState != State::DISCONNECTED) {
+        switch (currentState) {
+            case State::IDLE:
+                std::cout << "System IDLE. Initiating connection..." << "\n";
+                currentState = State::CONNECTING;
+                break;
+            case State::CONNECTING:
+                attempts++;
+                std::cout << "Attempting connection (attempt " << attempts << ")..." << "\n";
+                if (attempts < 3) {
+                    currentState = State::CONNECTING;
+                }
+                if (attempts == 3) {
+                    currentState = State::CONNECTED;
+                }
+                break;
+            case State::CONNECTED:
+                std::cout << "Connection established! Performing work..." << "\n";
+                std::cout << "Work finished. Disconnecting..." << "\n";
+                currentState = State::DISCONNECTED;
+                break;
+        }
+    }
+    std::cout << "Session closed gracefully." << "\n";
 
     return 0;
 }

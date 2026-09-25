@@ -36,8 +36,32 @@ using namespace std;
 
 int main() {
     // TODO: Write your solution here.
+    int arr[] = { 4, 1, 8, 3, 9, 2, 7 };
+    const int N = 7;
+    bool swapped;
+    int passes = 0;
 
+    for (int i = 0; i < N - 1; i++) {
+        swapped = false;
+        passes++;
+        for (int j = 0; j < N - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                std::swap(arr[j], arr[j + 1]);
+                swapped = true;
+            }
+        }
+        if (!swapped) {
+            break;
+        }
+        
+    }
+    std::cout << "Passes taken: " << passes << "\n";
 
+    std::cout << "Sorted array: ";
+    for (int num : arr) {
+        std::cout << num << " ";
+    }
+    std::cout << "\n";
 
     return 0;
 }

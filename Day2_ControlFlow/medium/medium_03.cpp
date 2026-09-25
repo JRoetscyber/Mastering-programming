@@ -48,11 +48,37 @@
 using namespace std;
 
 // TODO: Write canProcessTransaction here using guard clauses.
+bool canProcessTransaction(int accountBalance, int amount, bool isAccountActive, bool isFraudFlagged) {
+    if (!isAccountActive) {
+        std::cout << "Declined: Account inactive" << "\n";
+        return false;
+    }
+    if (isFraudFlagged) {
+        std::cout << "Declined: Fraud alert triggered" << "\n";
+        return false;
+    }
+    if (amount <= 0) {
+        std::cout << "Declined: Invalid transaction amount" << "\n";
+        return false;
+    }
+    if (amount > accountBalance) {
+        std::cout << "Declined: Insufficient funds" << "\n";
+        return false;
+    }
+
+    std::cout << "Approved: Transaction processed!" << "\n";
+    return true;
+}
 
 int main() {
     // TODO: Write your solution here.
+    //-Scenario A : balance = 500, amount = 100, active = false, fraud = false
+    //-Scenario B : balance = 500, amount = 800, active = true, fraud = false
+    //-Scenario C : balance = 500, amount = 250, active = true, fraud = false
 
-
+    canProcessTransaction(500, 100, false, false);
+    canProcessTransaction(500, 800, true, false);
+    canProcessTransaction(500, 250, true, false);
 
     return 0;
 }

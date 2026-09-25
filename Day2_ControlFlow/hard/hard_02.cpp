@@ -60,11 +60,38 @@
 using namespace std;
 
 // TODO: Write initializeService here.
+bool initializeService(bool failStage1, bool failStage2, bool failStage3) {
+    if (failStage1) {
+        std::cout << "Failed Stage 1\n";
+        goto cleanup_none;
+    }
+    std::cout << "Stage 1 Acquired (Network Buffer)\n";
+    if (failStage2) {
+        std::cout << "Failed Stage 2\n";
+        goto cleanup_stage1;
+    }
+    std::cout << "Stage 2 Acquired (DB Connection)\n";
+    if (failStage3) {
+        std::cout << "Failed stage 3\n";
+        goto cleanup_stage2;
+    }
+    std::cout << "Stage 3 Acquired (User Auth)\n";
+    std::cout << "Service Started Successfully!\n";
+    return true;
+
+    cleanup_stage2:
+        std::cout << "Releasing Stage 2 (DB Connection)\n";
+    cleanup_stage1:
+        std::cout << "Releasing Stage 1 (Network Buffer)\n";
+    cleanup_none:
+        std::cout << "Initialization aborted.\n";
+        return false;
+}
 
 int main() {
     // TODO: Write your solution here.
 
-
+    initializeService(false, true, false);
 
     return 0;
 }

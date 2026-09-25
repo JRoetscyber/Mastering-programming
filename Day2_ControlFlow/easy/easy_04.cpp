@@ -1,4 +1,4 @@
-﻿/*
+/*
  * FILE: easy_04.cpp
  * TOPIC: Control Flow & Bitwise - Day 2
  * DIFFICULTY: Easy
@@ -29,9 +29,25 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-    // TODO: Write your solution here.
+const int EXECUTE = 1;
+const int WRITE = 2;
+const int READ = 4;
 
+void premissionChecker(int a) {
+    if (a & READ) {
+        std::cout << "Has READ permission" << "\n";
+    }
+    if (a & EXECUTE) {
+        std::cout << "Has EXECUTE permission" << "\n";
+    }
+    if (a & WRITE) {
+        std::cout << "Has WRITE permission" << "\n";
+    }
+}
+
+int main() {
+    int myPermission = 5;
+    premissionChecker(myPermission);
 
     return 0;
 }
